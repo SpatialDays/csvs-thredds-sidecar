@@ -18,6 +18,7 @@ This download all the ERA5 and ERA5-Land data in each of their corresponding pat
 
 - mean_mslp
 - mean_soil_temp_L1
+- mean_SST
 
 ### ERA5 Daily 3
 
