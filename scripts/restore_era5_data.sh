@@ -3,11 +3,13 @@
 # daily data part 1
 aws --endpoint-url=$S3_URL s3 sync s3://csvs-netcdf/daily/ /usr/local/daily-1-data/ \
 --exclude ERA5_daily_mean_m* \
---exclude ERA5_daily_mean_s* && \
+--exclude ERA5_daily_mean_s* \
+--exclude ERA5_daily_mean_SST &&
 
 # daily data part 2
 aws --endpoint-url=$S3_URL s3 sync s3://csvs-netcdf/daily/ /usr/local/daily-2-data/ \
---exclude "*" --include ERA5_daily_mean_ms* --include ERA5_daily_mean_soil_temp_* &&
+--exclude "*" --include ERA5_daily_mean_ms* --include ERA5_daily_mean_soil_temp_* \
+--include ERA5_daily_mean_SST* &&
 
 # daily data part 3
 aws --endpoint-url=$S3_URL s3 sync s3://csvs-netcdf/daily/ /usr/local/daily-3-data/ \
@@ -15,7 +17,8 @@ aws --endpoint-url=$S3_URL s3 sync s3://csvs-netcdf/daily/ /usr/local/daily-3-da
 --exclude ERA5_daily_mean_RH/* \
 --exclude ERA5_daily_mean_TotalWind/* \
 --exclude ERA5_daily_mean_mslp/* \
---exclude ERA5_daily_mean_soil_temp_L1/* &&
+--exclude ERA5_daily_mean_soil_temp_L1/* \
+--exclude ERA5_daily_mean_SST/* &&
 
 # monthly data
 mkdir /usr/local/monthly-yearly-data/monthly &&
