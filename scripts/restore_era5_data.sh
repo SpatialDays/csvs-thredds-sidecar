@@ -4,7 +4,7 @@
 aws --endpoint-url=$S3_URL s3 sync s3://csvs-netcdf/daily/ /usr/local/daily-1-data/ \
 --exclude ERA5_daily_mean_m* \
 --exclude ERA5_daily_mean_s* \
---exclude ERA5_daily_mean_SST &&
+--exclude ERA5_daily_mean_SST* &&
 
 # daily data part 2
 aws --endpoint-url=$S3_URL s3 sync s3://csvs-netcdf/daily/ /usr/local/daily-2-data/ \
