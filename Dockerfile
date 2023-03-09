@@ -1,17 +1,17 @@
 FROM python:3.7.9-slim-buster
 
+RUN apt-get update && apt-get install -y wget && \
+    mkdir /azcopy && cd /azcopy && \
+    wget https://aka.ms/downloadazcopy-v10-linux && \
+    tar -xvf downloadazcopy-v10-linux && \
+    rm downloadazcopy-v10-linux && \
+    cp /azcopy/azcopy_linux_amd64*/azcopy /usr/bin/azcopy && \
+    chmod 755 /usr/bin/azcopy && \
+    apt-get remove -y wget && apt-get autoremove -y && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
 RUN mkdir /scripts
 
-RUN pip install awscli
-
-ENV AWS_ACCESS_KEY_ID **None**
-ENV AWS_SECRET_ACCESS_KEY **None**
-ENV AWS_DEFAULT_REGION eu-west-1
-ENV S3_S3V4 no
-ENV S3_URL http://s3-uk-1.sa-catapult.co.uk
-ENV CONCURRENT_REQUESTS 1
-
-RUN aws configure set default.s3.max_concurrent_requests ${CONCURRENT_REQUESTS}
 
 COPY scripts/ /scripts/
 
