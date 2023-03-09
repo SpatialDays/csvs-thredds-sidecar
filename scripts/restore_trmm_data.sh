@@ -1,3 +1,2 @@
 #!/bin/bash
-
-aws --endpoint-url=$S3_URL s3 sync s3://csvs-netcdf/TRMM/ /usr/local/trmm/
+azcopy copy "https://csvsdata.blob.core.windows.net/csvs-netcdf/TRMM/?$SAS_TOKEN" /usr/local/trmm/ --recursive=true --from-to BlobLocal --as-subdir=False

@@ -1,4 +1,4 @@
 #!/bin/bash
 
 mkdir -p /usr/local/gpcp
-aws --endpoint-url=$S3_URL s3 sync s3://csvs-netcdf/gpcp/ /usr/local/gpcp/
+azcopy copy "https://csvsdata.blob.core.windows.net/csvs-netcdf/gpcp/?$SAS_TOKEN" /usr/local/gpcp/ --recursive=true --from-to BlobLocal --as-subdir=False

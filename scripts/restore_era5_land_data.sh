@@ -1,3 +1,2 @@
 #!/bin/bash
-
-aws --endpoint-url=$S3_URL s3 sync s3://csvs-netcdf/ERA5-Land/ /usr/local/era5-land/
+azcopy copy "https://csvsdata.blob.core.windows.net/csvs-netcdf/ERA5-Land/?$SAS_TOKEN" /usr/local/era5-land/ --recursive=true --from-to BlobLocal --as-subdir=False

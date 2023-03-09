@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y wget && \
 
 RUN mkdir /scripts
 
-
 COPY scripts/ /scripts/
 
 RUN find /scripts/ -type f -iname "*.sh" -exec chmod +x {} \;
